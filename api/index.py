@@ -27,7 +27,7 @@ def gerar_barcode():
 
     code = barcode.get("code128", texto, writer= writer)
     buffer = io.BytesIO()
-    code.write(buffer)
+    code.write(buffer, options=writer_options)
     buffer.seek(0)
 
     return send_file(buffer, mimetype="image/png")
