@@ -16,9 +16,9 @@ def gerar_barcode():
         abort(400, "Parâmetro 'text' é obrigatório")
     writer = ImageWriter()
     writer_options = {
-        "module_width": 1.0,
-        "module_height": 60.0,
-        "font_size": 18,
+        "module_width": 1.5,
+        "module_height": 80.0,
+        "font_size": 20,
         "text_distance": 6.0,
         "quiet_zone": 10,
         "dpi": 300,
