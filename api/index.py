@@ -20,5 +20,8 @@ def gerar_barcode():
     buffer = io.BytesIO()
     code.write(buffer)
     buffer.seek(0)
-
-    return send_file(buffer, mimetype="image/png")
+    
+    response = send_file(buffer, mimetype="image/png")
+    response.headers["Cache-Control"] ="public, max-age=31536000, immutable"
+   
+    return response
