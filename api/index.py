@@ -9,15 +9,15 @@ app = Flask(__name__)
 def home():
     return "API funcionando"
 
-# @app.route("/barcode")
-# def gerar_barcode():
-#     texto = request.args.get("text")
-#     if not texto:
-#         abort(400, "Parâmetro 'text' é obrigatório")
+@app.route("/barcode")
+def gerar_barcode():
+    texto = request.args.get("text")
+    if not texto:
+        abort(400, "Parâmetro 'text' é obrigatório")
 
-#     code = barcode.get("code128", texto, writer=ImageWriter())
-#     buffer = io.BytesIO()
-#     code.write(buffer)
-#     buffer.seek(0)
+    code = barcode.get("code128", texto, writer=ImageWriter())
+    buffer = io.BytesIO()
+    code.write(buffer)
+    buffer.seek(0)
 
-#     return send_file(buffer, mimetype="image/png")
+    return send_file(buffer, mimetype="image/png")
