@@ -15,19 +15,10 @@ def gerar_barcode():
     if not texto:
         abort(400, "Parâmetro 'text' é obrigatório")
     writer = ImageWriter()
-    writer_options = {
-        "module_width": 1.5,
-        "module_height": 80.0,
-        "font_size": 20,
-        "text_distance": 6.0,
-        "quiet_zone": 10,
-        "dpi": 300,
-        "write_text": True
-    }
-
+    
     code = barcode.get("code128", texto, writer= writer)
     buffer = io.BytesIO()
-    code.write(buffer, options=writer_options)
+    code.write(buffer)
     buffer.seek(0)
 
     return send_file(buffer, mimetype="image/png")
